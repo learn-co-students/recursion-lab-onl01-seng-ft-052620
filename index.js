@@ -51,10 +51,15 @@ function maxOf(myArray) {
 
 function includesNumber(myArray, myNumber) {
   if (!myArray.length){
+    // base case, once array has been sliced up to nothing left to evalue, or its not an actual array of numbers...
     return false
   } else if (myArray[0] === myNumber) {
+    // if the array has one number, and its the myNumber, cool
+    // if the array has one number, but its not myNumber, it wont be true, and it will go into recurssion
+    // then seeing that it can't be sliced on index = 1 (cause it doesnt exist), the length becomes then 0, so its a false
     return true
   } else {
+    // a bunch of numbers, and we keep slicing one over until the myArray[n] === myNumber or no...
     return includesNumber(myArray.slice(1), myNumber)
   }
 }
